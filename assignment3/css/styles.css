@@ -1,0 +1,54 @@
+/* CSS Document */
+
+/*** Base CSS for All Devices ***/
+body {
+    background-color: #22262a;
+    color: #fff;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+#mobile-nav .navbar-nav {
+    background-color: #2d3339;
+    margin: 5px -15px 0 -15px;
+}
+
+#mobile-nav .nav-item {
+    border: 1px solid #22272b;
+}
+
+#mobile-nav .nav-item:hover {
+    background-color: #434d56;
+}
+
+section {
+    margin: 5px;
+    padding: 10px;
+}
+
+#sec1 {
+    background-color: #9788C2;
+}
+
+#sec2 {
+    background-color: #607D8B;
+}
+
+#sec3 {
+    background-color: #468461;
+}
+
+@media (min-width: 768px) {
+    #mobile-nav, .navbar button {
+        display: none!important;
+    }
+}
