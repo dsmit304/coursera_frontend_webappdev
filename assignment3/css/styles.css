@@ -47,7 +47,7 @@ section {
     background-color: #468461;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
     #mobile-nav, .navbar button {
         display: none!important;
     }
