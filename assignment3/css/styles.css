@@ -1,7 +1,6 @@
 /* CSS Document */
 
-/*** Base CSS for All Devices ***/
-a {
+a, a:hover {
     color: #fff;
 }
 
@@ -21,6 +20,10 @@ h2 {
     margin-top: 15px;
 }
 
+#mobile-nav a:hover {
+    background-color: #384047;
+}
+
 #mobile-nav .navbar-nav {
     background-color: #2d3339;
     margin: 5px -15px 0 -15px;
@@ -30,9 +33,14 @@ h2 {
     border: 1px solid #22272b;
 }
 
+.navbar button:hover {
+    background-color: #384047;
+}
+
 section {
+    border-radius: 5px;
     margin: 10px 0;
-    padding: 10px;
+    padding: 15px;
 }
 
 #chicken {
@@ -45,10 +53,4 @@ section {
 
 #sushi {
     background-color: #468461;
-}
-
-@media (min-width: 576px) {
-    #mobile-nav, .navbar button {
-        display: none!important;
-    }
 }
