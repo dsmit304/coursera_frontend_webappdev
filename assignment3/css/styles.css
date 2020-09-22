@@ -1,6 +1,10 @@
 /* CSS Document */
 
 /*** Base CSS for All Devices ***/
+a {
+    color: #fff;
+}
+
 body {
     background-color: #22262a;
     color: #fff;
@@ -14,7 +18,7 @@ h1 {
 }
 
 h2 {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 #mobile-nav .navbar-nav {
@@ -26,24 +30,20 @@ h2 {
     border: 1px solid #22272b;
 }
 
-#mobile-nav .nav-item:hover {
-    background-color: #434d56;
-}
-
 section {
-    margin: 5px;
+    margin: 10px 0;
     padding: 10px;
 }
 
-#sec1 {
+#chicken {
     background-color: #9788C2;
 }
 
-#sec2 {
+#beef {
     background-color: #607D8B;
 }
 
-#sec3 {
+#sushi {
     background-color: #468461;
 }
 
