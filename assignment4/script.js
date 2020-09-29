@@ -77,18 +77,20 @@ WARNING!!! WARNING!!!
   };
 
   // Bonus/Optional
-  names.reduce((accum, name) => {
+  var reduceNames = names.reduce((array, name) => {
     if (name.charAt(0).toLowerCase() === "j") {
-      bye.push(byeSpeaker.speakSimple(name));
+      array.bye.push(byeSpeaker.speakSimple(name));
     } else {
-      hello.push(helloSpeaker.speakSimple(name));
+      array.hello.push(helloSpeaker.speakSimple(name));
     }
-  }, [hello = [], bye = []]);
 
-  for (var i = 0; i < hello.length; i++) {
-    console.log(hello[i]);
+    return array;
+  }, {hello: [], bye: []});
+
+  for (var i = 0; i < reduceNames.hello.length; i++) {
+    console.log(reduceNames.hello[i]);
   }
-  for (var i = 0; i < bye.length; i++) {
-    console.log(bye[i]);
+  for (var i = 0; i < reduceNames.bye.length; i++) {
+    console.log(reduceNames.bye[i]);
   }
 })();
