@@ -64,18 +64,32 @@ WARNING!!! WARNING!!!
       helloSpeaker.speak(names[i]);
     }
   }
+
   // Mapped names array
   names.map(mapNames);
   function mapNames(name) {
-    firstLetter = name.charAt(0).toLowerCase();
-
-    if (firstLetter == "j") {
+    if (name.charAt(0).toLowerCase() == "j") {
       byeSpeaker.speak(name);
     } else {
       helloSpeaker.speak(name);
     }
   };
 
-  // BONUS
-  
+  // Bonus/Optional
+  var hello = [];
+  var bye = [];
+  names.reduce((accum, name) => {
+    if (name.charAt(0).toLowerCase() == "j") {
+      bye.push(name);
+    } else {
+      hello.push(name);
+    }
+  }, [hello, bye]);
+
+  for (var i = 0; i < hello.length; i++) {
+    console.log(helloSpeaker.speakSimple(hello[i]));
+  }
+  for (var i = 0; i < bye.length; i++) {
+    console.log(byeSpeaker.speakSimple(bye[i]));
+  }
 })(window);
