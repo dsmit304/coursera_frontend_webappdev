@@ -79,16 +79,16 @@ WARNING!!! WARNING!!!
   // Bonus/Optional
   names.reduce((accum, name) => {
     if (name.charAt(0).toLowerCase() === "j") {
-      bye.push(name);
+      bye.push(byeSpeaker.speakSimple(name));
     } else {
-      hello.push(name);
+      hello.push(helloSpeaker.speakSimple(name));
     }
   }, [hello = [], bye = []]);
 
   for (var i = 0; i < hello.length; i++) {
-    console.log(helloSpeaker.speakSimple(hello[i]));
+    console.log(hello[i]);
   }
   for (var i = 0; i < bye.length; i++) {
-    console.log(byeSpeaker.speakSimple(bye[i]));
+    console.log(bye[i]);
   }
 })();
