@@ -26,10 +26,9 @@ The code does NOT currently work! It is YOUR job to make it work
 as described in the requirements and the steps in order to complete this
 assignment.
 WARNING!!! WARNING!!!
-
 */
 
-(function (window) {
+(function () {
   // STEP 1:
   // Wrap the entire contents of script.js inside of an IIFE
   // See Lecture 52, part 2
@@ -58,7 +57,7 @@ WARNING!!! WARNING!!!
     // 'j'. If the same, call byeSpeaker's 'speak' method with the current name
     // in the loop. Otherwise, call helloSpeaker's 'speak' method with the current
     // name in the loop.
-    if (firstLetter == "j") {
+    if (firstLetter === "j") {
       byeSpeaker.speak(names[i]);
     } else {
       helloSpeaker.speak(names[i]);
@@ -68,23 +67,23 @@ WARNING!!! WARNING!!!
   // Mapped names array
   names.map(mapNames);
   function mapNames(name) {
-    if (name.charAt(0).toLowerCase() == "j") {
-      byeSpeaker.speak(name);
+    if (name.charAt(0).toLowerCase() === "j") { // I was unsure which speak method I was supposed to be using here
+      // byeSpeaker.speak(name);
+      console.log(byeSpeaker.speakSimple(name));
     } else {
-      helloSpeaker.speak(name);
+      // helloSpeaker.speak(name);
+      console.log(helloSpeaker.speakSimple(name));
     }
   };
 
   // Bonus/Optional
-  var hello = [];
-  var bye = [];
   names.reduce((accum, name) => {
-    if (name.charAt(0).toLowerCase() == "j") {
+    if (name.charAt(0).toLowerCase() === "j") {
       bye.push(name);
     } else {
       hello.push(name);
     }
-  }, [hello, bye]);
+  }, [hello = [], bye = []]);
 
   for (var i = 0; i < hello.length; i++) {
     console.log(helloSpeaker.speakSimple(hello[i]));
@@ -92,4 +91,4 @@ WARNING!!! WARNING!!!
   for (var i = 0; i < bye.length; i++) {
     console.log(byeSpeaker.speakSimple(bye[i]));
   }
-})(window);
+})();
