@@ -172,25 +172,20 @@ function buildAndShowAboutHTML () {
     function (aboutHtml) {
       var html = aboutHtml;
       var num = generateRandomNumber();
-      var star = "fa fa-star";
-      var outline = "far fa-star";
-      var stars = {};
+      var rating = [];
   
       for(var i = 1; i <= 5; i++) {
         if(i <= num) {
-          stars[i] = star;
+          rating[i] = "fa fa-star";
         } else {
-          stars[i] = outline;
+          rating[i] = "far fa-star";
         }
-        console.log(stars);
-        html = html.replace(new RegExp("{{}}"), stars[i]);
+        html = html.replace(new RegExp("\"\""), '"' + rating[i] + '"');
       }
 
       // Bonus/Optional
-      html = insertProperty(html,
-        "rating",
-         num + "-star rating");
-      console.log(html);
+      html = insertProperty(html, "rating", num + "-star rating");
+
       insertHtml("#main-content", html);
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
