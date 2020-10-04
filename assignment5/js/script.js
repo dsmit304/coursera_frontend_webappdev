@@ -170,7 +170,6 @@ function buildAndShowAboutHTML () {
   $ajaxUtils.sendGetRequest(
     aboutHtmlUrl,
     function (aboutHtml) {
-      var html = aboutHtml;
       var num = generateRandomNumber();
       var rating = [];
   
@@ -180,13 +179,13 @@ function buildAndShowAboutHTML () {
         } else {
           rating[i] = "far fa-star";
         }
-        html = html.replace(new RegExp("\"\""), '"' + rating[i] + '"');
+        aboutHtml = aboutHtml.replace(new RegExp("\"\""), '"' + rating[i] + '"');
       }
 
       // Bonus/Optional
-      html = insertProperty(html, "rating", num + "-star rating");
+      aboutHtml = insertProperty(aboutHtml, "rating", num + "-star rating");
 
-      insertHtml("#main-content", html);
+      insertHtml("#main-content", aboutHtml);
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
