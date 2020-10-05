@@ -171,15 +171,13 @@ function buildAndShowAboutHTML () {
     aboutHtmlUrl,
     function (aboutHtml) {
       var num = generateRandomNumber();
-      var rating = [];
   
       for(var i = 1; i <= 5; i++) {
         if(i <= num) {
-          rating[i] = "fa fa-star";
+          aboutHtml = insertProperty(aboutHtml, "class" + i, "fa fa-star");
         } else {
-          rating[i] = "far fa-star";
+          aboutHtml = insertProperty(aboutHtml, "class" + i, "far fa-star");
         }
-        aboutHtml = aboutHtml.replace(new RegExp("\"\""), '"' + rating[i] + '"');
       }
 
       // Bonus/Optional
