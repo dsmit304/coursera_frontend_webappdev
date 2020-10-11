@@ -6,14 +6,20 @@ body {
     font-size: 16px;
 }
 
-.data {
-    border: 2px solid #468461;
+.data-border {
+    border: 3px solid #468461;
     border-radius: 5px;
+}
+
+.data-color {
     color: #468461;
 }
 
-.no-data {
-    border: 2px solid #813754;
+.no-data-border {
+    border: 3px solid #b35f57;
     border-radius: 5px;
-    color: #813754;
+}
+
+.no-data-color {
+    color: #b35f57;
 }

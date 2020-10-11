@@ -17,13 +17,13 @@
           <div class="form-group">
               <input id="lunch-menu" type="text"
               placeholder="list comma separated dishes you usually have for lunch"
-              class="form-control" ng-model="lunch">
+              class="form-control" ng-class="changeBorder" ng-model="lunch">
               <p>{{comment}}</p>
           </div>
           <div class="form-group">
               <button class="btn btn-default" ng-click="checkIntakeAmount();">Check If Too Much</button>
           </div>
-          <div class="form-group message" ng-class="changeClass">
+          <div class="form-group message" ng-class="changeColor">
               <p>{{message}}</p>
           </div>
     </div>

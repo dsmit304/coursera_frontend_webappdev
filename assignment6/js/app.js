@@ -5,13 +5,15 @@
     .controller('LunchCheckController', LunchCheckController);
     LunchCheckController.$inject = ['$scope'];
     function LunchCheckController($scope) {
-        $scope.changeClass = "";
+        $scope.changeBorder = "";
+        $scope.changeColor = "";
         $scope.comment = "";
         $scope.lunch = "";
         $scope.message = "";
 
         $scope.checkIntakeAmount = function () {
-            var changecss = "";
+            var border = "";
+            var color = "";
             var comment = "";
             var count = 0;
             var lunch = $scope.lunch;
@@ -19,7 +21,8 @@
             var message = "";
 
             if(!lunch) {
-                changecss = "no-data";
+                border = "no-data-border";
+                color = "no-data-color";
                 message = "Please enter data first";
             } else {
                 for(var i = 0; i < menu.length; i++) {
@@ -30,17 +33,21 @@
                     }
                 }
                 if(count <= 1 && menu[0] == "") {
-                    changecss = "no-data";
+                    border = "no-data-border";
+                    color = "no-data-color";
                     message = "Please enter data first";
                 } else if(count <= 3 ) {
-                    changecss = "data";
+                    border = "data-border";
+                    color = "data-color";
                     message = "Enjoy!";
                 } else {
-                    changecss = "data";
+                    border = "data-border";
+                    color = "data-color";
                     message = "Too much!";
                 }
             }
-            $scope.changeClass = changecss;
+            $scope.changeBorder = border;
+            $scope.changeColor = color;
             $scope.comment = comment;
             $scope.message = message;
         }
