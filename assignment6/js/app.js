@@ -40,7 +40,7 @@
                     message = "Too much!";
                 }
             }
-            $scope.changeClass = change;
+            $scope.changeClass = changecss;
             $scope.comment = comment;
             $scope.message = message;
         }
