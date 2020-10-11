@@ -1,0 +1,19 @@
+/* CSS Document */
+body {
+    background-color: #22262a;
+    color: #fff;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.data {
+    border: 2px solid #468461;
+    border-radius: 5px;
+    color: #468461;
+}
+
+.no-data {
+    border: 2px solid #813754;
+    border-radius: 5px;
+    color: #813754;
+}
