@@ -1,0 +1,27 @@
+/* CSS Document */
+
+body {
+    background-color: #22262a;
+    color: #fff;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+button > span {
+    color: #468461;
+ }
+
+.emptyMessage {
+    font-weight: bold;
+    color: #b05d69;
+    font-size: 1.2em;
+}
+
+li {
+    margin-bottom: 7px;
+    font-size: 1.2em;
+}
+  
+li > button {
+    margin-left: 6px;
+}
