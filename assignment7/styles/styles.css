@@ -17,6 +17,13 @@ button > span {
     font-size: 1.2em;
 }
 
+input {
+    border-radius: 5px;
+    color: #333;
+    padding: 3px 5px;
+    width: 15%;
+}
+
 li {
     margin-bottom: 7px;
     font-size: 1.2em;
