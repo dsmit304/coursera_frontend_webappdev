@@ -27,7 +27,7 @@
     // Custom Filter to display item total price
     function PriceFilter() {
         return function (input) {
-            input = input.toString() || "";
+            input = input || "";
             return "$$$" + input;
         }
     }
