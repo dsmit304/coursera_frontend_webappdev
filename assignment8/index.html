@@ -16,11 +16,11 @@
           <input type="text" placeholder="Search..." class="form-control" ng-model="menu.searchTerm">
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-          <button class="btn btn-info" ng-click="menu.getMatchedMenuItems()">Narrow It Down For Me!</button>
+          <button class="btn btn-info" ng-click="menu.getMatchedMenuItems(menu.searchTerm)">Narrow It Down For Me!</button>
         </div>
       </div>
       <div class="row">
-        <div class="error-message" ng-if="message">{{ menu.message }}</div>
+        <div class="error-message" ng-if="!message">{{ menu.message }}</div>
       </div>
       <div ng-if="menu.found">
         <h2>{{ menu.found.length }} Result(s)</h2>

@@ -25,11 +25,11 @@
     NarrowItDownController.$inject = ['MenuSearchService'];
     function NarrowItDownController(MenuSearchService) {
         var menu = this;
-
-        menu.getMatchedMenuItems = function () {
+        // Runs service once button is clicked
+        menu.getMatchedMenuItems = function (searchTerm) {
             menu.message = "";
             menu.found = "";
-            var promise = MenuSearchService.getMatchedMenuItems(menu.searchTerm);
+            var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
 
             promise.then(function (results) {
                 if (results === undefined || results.length == 0) {
@@ -39,6 +39,7 @@
                 }
             });
         };
+        // Removes clicked item
         menu.removeItem = function (index) {
             MenuSearchService.removeItem(index);
         };
@@ -59,9 +60,7 @@
                 for (var item of results.data.menu_items) {
                     // Puts matched results in found items array
                     if (searchTerm !== "" && item.description.includes(searchTerm)) {
-                        foundItems.push({'name': item.name,
-                                        'short_name': item.short_name,
-                                        'description': item.description});
+                        foundItems.push(item);
                     }
                 }
 
