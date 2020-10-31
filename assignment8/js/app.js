@@ -4,31 +4,38 @@
     angular.module('NarrowItDownApp', [])
     .controller('NarrowItDownController', NarrowItDownController)
     .service('MenuSearchService', MenuSearchService)
-    .directive('foundItems', FoundItems)
+    .directive('foundItems', FoundItemsDirective)
     .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com/");
-    function FoundItems() {
+    // Found Items Directive
+    function FoundItemsDirective() {
         var ddo = {
-          templateUrl: 'foundItems.html'
+          templateUrl: 'foundItems.html',
+          scope: {
+            found: '<',
+            onRemove: '&'
+          },
+          controller: NarrowItDownController,
+          controllerAs: 'menu',
+          bindToController: true
         };
 
         return ddo;
       }
     // Narrow It Down Controller
-    NarrowItDownController.$inject = ['$scope', 'MenuSearchService'];
-    function NarrowItDownController($scope, MenuSearchService) {
+    NarrowItDownController.$inject = ['MenuSearchService'];
+    function NarrowItDownController(MenuSearchService) {
         var menu = this;
-        $scope.searchTerm = "";
 
         menu.getMatchedMenuItems = function () {
-            $scope.message = "";
-            menu.foundItems = "";
-            var found = MenuSearchService.getMatchedMenuItems(menu.searchTerm);
+            menu.message = "";
+            menu.found = "";
+            var promise = MenuSearchService.getMatchedMenuItems(menu.searchTerm);
 
-            found.then(function (results) {
+            promise.then(function (results) {
                 if (results === undefined || results.length == 0) {
-                    $scope.message = "Nothing found";
+                    menu.message = "Nothing found";
                 } else {
-                    menu.foundItems = results;
+                    menu.found = results;
                 }
             });
         };
