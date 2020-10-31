@@ -42,6 +42,11 @@
         // Removes clicked item
         menu.removeItem = function (index) {
             MenuSearchService.removeItem(index);
+            // Check if all items have been removed
+            if(menu.found.length == 0) {
+                menu.message = "No more items to remove";
+                menu.found = "";
+            }
         };
     }
     // Menu Search Service
