@@ -1,0 +1,26 @@
+/* CSS Document */
+
+body {
+  background-color: #22262a;
+  color: #fff;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: auto;
+  text-align: center;
+}
+
+.error-message {
+  color: #b05d69;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+input[type="text"] {
+  float: right;
+  width: 375px;
+}
