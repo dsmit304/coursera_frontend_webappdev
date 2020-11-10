@@ -7,10 +7,10 @@
     RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
     function RoutesConfig($stateProvider, $urlRouterProvider) {
     
-      // Redirect to home page if no other URL matches
+      // Redirect to home page by default
       $urlRouterProvider.otherwise('/');
     
-      // *** Set up UI states ***
+      // Setup UI states
       $stateProvider
     
       // Home page
@@ -19,7 +19,7 @@
         templateUrl: 'src/menu/templates/home.html'
       })
     
-      // Premade list page
+      // Categories page
       .state('categories', {
         url: '/categories',
         templateUrl: 'src/menu/templates/categories.html',
@@ -31,7 +31,8 @@
         }
       })
 
-      .state('categories.catItemsList', {
+      // Items page
+      .state('categoriesItemsList', {
         url: '/items/{categoryShortName}',
         templateUrl: 'src/menu/templates/items.html',
         controller: 'ItemsController as itemsCtrl',

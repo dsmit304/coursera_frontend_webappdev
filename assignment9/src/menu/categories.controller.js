@@ -9,6 +9,6 @@
     function CategoriesController(categoriesList) {
         var categoriesCtrl = this;
 
-        categoriesCtrl.categoriesList = categoriesList;
+        categoriesCtrl.categoriesList = categoriesList.data;
     }
 })();

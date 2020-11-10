@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Menu Categories</h1>
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 spacing" ng-repeat="item in categoriesCtrl.categoriesList.data">
-      <a ui-sref="categories.catItemsList({categoryShortName: item.short_name})">{{ item.name }} ({{ item.short_name }})</a>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 spacing" ng-repeat="item in categoriesCtrl.categoriesList">
+      <a ui-sref="categoriesItemsList({categoryShortName: item.short_name})">{{ item.name }} ({{ item.short_name }})</a>
     </div>
   </div>
 </div>
