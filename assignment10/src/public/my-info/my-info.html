@@ -1,0 +1,23 @@
+<div>
+    <div ng-if="myInfoCtrl.user">
+        <h1 class="info-header">Your Registered Information</h1>
+        <hr>
+        <div class="form-spacing row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bottom-spacing">First Name: {{ myInfoCtrl.user.firstname }}</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bottom-spacing">Last Name: {{ myInfoCtrl.user.lastname }}</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bottom-spacing">Email Address: {{ myInfoCtrl.user.email }}</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bottom-spacing">Phone Number: {{ myInfoCtrl.user.phone }}</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bottom-spacing">Favorite Menu item: {{ myInfoCtrl.user.favItem | uppercase }}</div>
+            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <img width="250" height="200" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.user.favItem | uppercase}}.jpg" alt="{{myInfoCtrl.user.favItem | uppercase}}">
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                <p>Name: {{ myInfoCtrl.user.name }}</p>
+                <p>Description: {{ myInfoCtrl.user.description}}</p>
+            </div>
+        </div>
+    </div>
+    <div ng-if="!myInfoCtrl.user">
+        <p class="not-signed-up">Not Signed Up Yet.<a ui-sref="public.sign-up">Sign Up Now!</a></a></p>
+    </div>
+</div>
