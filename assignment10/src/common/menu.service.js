@@ -27,7 +27,7 @@
       });
     };
 
-    service.getMenuShortNames = function (shortName) {
+    service.getMenuShortName = function (shortName) {
       return $http.get(ApiPath + '/menu_items/' + shortName.toUpperCase() + '.json').then(function (response) {
         return response.data;
       }).catch( function (error) {

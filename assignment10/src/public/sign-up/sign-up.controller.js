@@ -9,17 +9,19 @@
       var sign = this;
 
       sign.checkFavItem = function() {
-        var promise = MenuService.getMenuShortNames(sign.user.favItem);
+        if(sign.user.favItem !== undefined) {
+          var promise = MenuService.getMenuShortName(sign.user.favItem);
 
-        promise.then(function (results) {
-          if (results.error) {
-              sign.favItemNotFound = true;
-          } else {
-              sign.favItemNotFound = false;
-              sign.user.name = results.name;
-              sign.user.description = results.description;
-          }
-        });
+          promise.then(function (results) {
+            if (results.error) {
+                sign.favItemNotFound = true;
+            } else {
+                sign.favItemNotFound = false;
+                sign.user.name = results.name;
+                sign.user.description = results.description;
+            }
+          });
+        }
       }
   
       sign.submit = function () {
