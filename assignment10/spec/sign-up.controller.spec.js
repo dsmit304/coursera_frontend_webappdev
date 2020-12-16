@@ -1,6 +1,6 @@
-describe('SignUpController.checkFavItem()', function () {
+describe('SignUpController', function () {
     beforeEach(module('public'));
-    var $httpBackend, ApiBasePath, $controller, signUpController;
+    var $httpBackend, ApiPath, $controller, $q, signUpController, user;
 
     beforeEach(function () {
         module(function ($provide) {
@@ -8,35 +8,53 @@ describe('SignUpController.checkFavItem()', function () {
                 var service = this;
 
                 service.getMenuShortName = function (shortName) {
-                    var dummyData = {data: {"id":91,"short_name":"CU21","name":"Curry Chicken","description":"white meat chicken sauteed with ionions, peas, carrots, and broccoli","price_small":11.95,"price_large":14.95,"small_portion_name":"pint","large_portion_name":"large","created_at":"2020-11-19T00:35:47.270Z","updated_at":"2020-11-19T00:35:47.270Z","category_short_name":"CU","image_present":true}};
-                    $httpBackend.whenGET(ApiBasePath + '/menu_items/CU21.json').respond([dummyData]);
+                    var httpResponse = [{"id":91,
+                                         "short_name":"CU21",
+                                         "name":"Curry Chicken",
+                                         "description":"white meat chicken sauteed with ionions, peas, carrots, and broccoli",
+                                         "price_small":11.95,
+                                         "price_large":14.95,
+                                         "small_portion_name":"pint",
+                                         "large_portion_name":"large",
+                                         "created_at":"2020-11-19T00:35:47.270Z",
+                                         "updated_at":"2020-11-19T00:35:47.270Z",
+                                         "category_short_name":"CU","image_present":true}];
+                    $httpBackend.whenGET(ApiPath + '/menu_items/CU21.json').respond(200, httpResponse);
                     $httpBackend.flush();
+                    var deferred = $q.defer();
+                    return deferred.promise;
                 };
             }),
             $provide.service('StoreDataServiceMock', function() {
                 var service = this;
 
                 service.setUser = function (user) {
-                    return;
+                    user = user;
                 };
             });
         });
     });
 
-    beforeEach(inject(function (_$controller_, _$httpBackend_, MenuServiceMock, StoreDataServiceMock) {
+    beforeEach(inject(function (_$controller_, _$httpBackend_, _$q_, _ApiPath_, MenuServiceMock, StoreDataServiceMock) {
         $controller = _$controller_;
         $httpBackend = _$httpBackend_;
+        $q = _$q_;
+        ApiPath = _ApiPath_;
 
         signUpController = $controller('SignUpController', {'MenuService': MenuServiceMock, 'StoreDataService': StoreDataServiceMock});
     }));
 
-    it('should return json blob of favorite item', function() {
-        var user = {"firstname":"Jane","lastname":"Doe","email":"janedoe@yahoo.com","phone":"123-456-7890","favItem":"CU21"};
-        signUpController.user = user;
-        var promise = signUpController.checkFavItem(user.favItem);
+    it('controller is defined', function() {
+        expect(signUpController).toBeDefined();
+    });
 
-        promise.then(function() {
+    describe('checkFavItem()', function () {
+        it('favorite menu item exists', function() {
+            user = {"firstname":"Jane","lastname":"Doe","email":"janedoe@yahoo.com","phone":"123-456-7890","favItem":"CU21"};
+            signUpController.user = user;
+            signUpController.checkFavItem(user.favItem);
+
             expect(signUpController.favItemNotFound).toBeFalsy();
-        })
+        });
     });
 });
