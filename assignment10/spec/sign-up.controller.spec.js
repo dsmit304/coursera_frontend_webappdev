@@ -1,6 +1,6 @@
 describe('SignUpController', function () {
     beforeEach(module('public'));
-    var $httpBackend, ApiPath, $controller, $q, signUpController, user;
+    var $httpBackend, ApiPath, $controller, signUpController, user;
 
     beforeEach(function () {
         module(function ($provide) {
@@ -19,10 +19,8 @@ describe('SignUpController', function () {
                                          "created_at":"2020-11-19T00:35:47.270Z",
                                          "updated_at":"2020-11-19T00:35:47.270Z",
                                          "category_short_name":"CU","image_present":true}];
-                    $httpBackend.whenGET(ApiPath + '/menu_items/CU21.json').respond(200, httpResponse);
+                    $httpBackend.expectGET(ApiPath + '/menu_items/CU21.json').respond(200, httpResponse);
                     $httpBackend.flush();
-                    var deferred = $q.defer();
-                    return deferred.promise;
                 };
             }),
             $provide.service('StoreDataServiceMock', function() {
@@ -35,10 +33,9 @@ describe('SignUpController', function () {
         });
     });
 
-    beforeEach(inject(function (_$controller_, _$httpBackend_, _$q_, _ApiPath_, MenuServiceMock, StoreDataServiceMock) {
+    beforeEach(inject(function (_$controller_, _$httpBackend_, _ApiPath_, MenuServiceMock, StoreDataServiceMock) {
         $controller = _$controller_;
         $httpBackend = _$httpBackend_;
-        $q = _$q_;
         ApiPath = _ApiPath_;
 
         signUpController = $controller('SignUpController', {'MenuService': MenuServiceMock, 'StoreDataService': StoreDataServiceMock});
