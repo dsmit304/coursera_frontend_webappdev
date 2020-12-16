@@ -2,12 +2,6 @@ describe('SignUpController.checkFavItem()', function () {
     beforeEach(module('public'));
     var $httpBackend, ApiBasePath, $controller, signUpController;
 
-    beforeEach(inject(function (_$controller_, _$httpBeckend_, MenuServiceMock, StoreDataServiceMock) {
-        $controller = _$controller_;
-        $httpBackend = _$httpBeckend_;
-
-        signUpController = $controller('SignUpController', {'MenuService': MenuServiceMock, 'StoreDataService': StoreDataServiceMock});
-    }));
     beforeEach(function () {
         module(function ($provide) {
             $provide.service('MenuServiceMock', function() {
@@ -28,6 +22,13 @@ describe('SignUpController.checkFavItem()', function () {
             });
         });
     });
+
+    beforeEach(inject(function (_$controller_, _$httpBackend_, MenuServiceMock, StoreDataServiceMock) {
+        $controller = _$controller_;
+        $httpBackend = _$httpBackend_;
+
+        signUpController = $controller('SignUpController', {'MenuService': MenuServiceMock, 'StoreDataService': StoreDataServiceMock});
+    }));
 
     it('should return json blob of favorite item', function() {
         var user = {"firstname":"Jane","lastname":"Doe","email":"janedoe@yahoo.com","phone":"123-456-7890","favItem":"CU21"};
