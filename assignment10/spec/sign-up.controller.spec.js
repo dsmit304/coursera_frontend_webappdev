@@ -32,6 +32,7 @@ describe('SignUpController.checkFavItem()', function () {
 
     it('should return json blob of favorite item', function() {
         var user = {"firstname":"Jane","lastname":"Doe","email":"janedoe@yahoo.com","phone":"123-456-7890","favItem":"CU21"};
+        signUpController.user = user;
         var promise = signUpController.checkFavItem(user.favItem);
 
         promise.then(function() {
