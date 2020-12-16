@@ -19,7 +19,7 @@ describe('SignUpController', function () {
                                          "created_at":"2020-11-19T00:35:47.270Z",
                                          "updated_at":"2020-11-19T00:35:47.270Z",
                                          "category_short_name":"CU","image_present":true}];
-                    $httpBackend.expectGET(ApiPath + '/menu_items/CU21.json').respond(200, httpResponse);
+                    $httpBackend.whenGET(ApiPath + '/menu_items/CU21.json').respond(httpResponse);
                     $httpBackend.flush();
                 };
             }),
@@ -47,7 +47,11 @@ describe('SignUpController', function () {
 
     describe('checkFavItem()', function () {
         it('favorite menu item exists', function() {
-            user = {"firstname":"Jane","lastname":"Doe","email":"janedoe@yahoo.com","phone":"123-456-7890","favItem":"CU21"};
+            user = {"firstname":"Jane",
+                    "lastname":"Doe",
+                    "email":"janedoe@yahoo.com",
+                    "phone":"123-456-7890",
+                    "favItem":"CU21"};
             signUpController.user = user;
             signUpController.checkFavItem(user.favItem);
 
